@@ -16,7 +16,17 @@ export class MyCounter extends LitElement {
 
   render() {
     return html`
-      <div>Llevas: ${this.counter}</div>
+    <style>
+      div {
+        border: 1px solid #ddd;
+      }
+
+      .x {
+        background: #ccc;
+        color: #fff;
+      }
+    </style>
+      <div class="x">Llevas: ${this.counter}</div>
       <div>
         <button @click="${this.incrementar}">+1</button>
         <button @click="${this.reiniciar}">Reiniciar</button>
