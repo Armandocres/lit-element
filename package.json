@@ -1,0 +1,14 @@
+{
+  "name": "lit-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Armando cruz <armandocres99@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "lit-element": "^3.0.2"
+  }
+}
