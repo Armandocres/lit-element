@@ -6,18 +6,21 @@ export class RIckMOrtyAPi extends LitElement {
   static get properties() {
     return {
       items: { type: Array },
-      charac: { type: Object}
+      charac: { type: Object },
+      valueInput: {type: Number}
     }
   }
 
   constructor() {
     super();
     this.items = [];
-    this.charac = {}
-    this.attachShadow({ mode: 'open' })
+    this.charac = {};
+    this.valueInput = 0;
+    this.attachShadow({ mode: 'open' });
   }
 
-
+//formualrio
+//generar componente post
   render() {
     return html`
       <button @click='${this.getData}'>Trae información completa</button>
@@ -26,12 +29,14 @@ export class RIckMOrtyAPi extends LitElement {
           <input
             id="character",
             type="number",
+            .value="${this.valueInput}"
             placeholder="ingresa un id del personaje (numero)"
+            @input='${this.onChange}'
           >
-          <button type="button" @click='${this.getOneData}'>Buscalo</button>
         </label>
+        <button type="button" @click='${this.getOneData}'>Buscalo</button>
       </form>
-      <!-- ${this.dataTemplate} -->
+      ${this.dataTemplate}
       ${this.dataOneTemplate}
     `;
   }
@@ -49,8 +54,7 @@ export class RIckMOrtyAPi extends LitElement {
   getOneData() {
     let datos = new GetDAta();
     datos.method = 'GET';
-    let valueInput = this.renderRoot.querySelector('#character').value;
-    datos.getOneDataApi(valueInput);
+    datos.getOneDataApi(this.valueInput);
     datos.addEventListener('ApiCall', (data) => {
       this._dataOneFormat(data.detail.data);
     })
@@ -73,7 +77,11 @@ export class RIckMOrtyAPi extends LitElement {
   _dataOneFormat(data) {
     let character = data;
     this.charac = character;
-    console.log(this.charac.image);
+  }
+
+  onChange(e) {
+    this.valueInput = parseInt(e.target.value);
+    console.log(this.valueInput);
   }
 
   get dataTemplate() {
