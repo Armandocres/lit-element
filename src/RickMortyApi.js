@@ -5,13 +5,15 @@ export class RIckMOrtyAPi extends LitElement {
 
   static get properties() {
     return {
-      items: { type: Array}
+      items: { type: Array },
+      charac: { type: Object}
     }
   }
 
   constructor() {
     super();
-    this.items = []
+    this.items = [];
+    this.charac = {}
     this.attachShadow({ mode: 'open' })
   }
 
@@ -30,6 +32,7 @@ export class RIckMOrtyAPi extends LitElement {
         </label>
       </form>
       <!-- ${this.dataTemplate} -->
+      ${this.dataOneTemplate}
     `;
   }
 
@@ -45,10 +48,12 @@ export class RIckMOrtyAPi extends LitElement {
 
   getOneData() {
     let datos = new GetDAta();
-    datos.method = 'POST';
-    const valueInput = ShadowRoot.document.getElementById("character").value;
-    console.log(valueInput);
-    // datos.getOneDataApi()
+    datos.method = 'GET';
+    let valueInput = this.renderRoot.querySelector('#character').value;
+    datos.getOneDataApi(valueInput);
+    datos.addEventListener('ApiCall', (data) => {
+      this._dataOneFormat(data.detail.data);
+    })
   }
 
   _dataFormat(data) {
@@ -65,6 +70,12 @@ export class RIckMOrtyAPi extends LitElement {
     this.items = characters;
   }
 
+  _dataOneFormat(data) {
+    let character = data;
+    this.charac = character;
+    console.log(this.charac.image);
+  }
+
   get dataTemplate() {
     return html`
       ${this.items.map(character => html`
@@ -77,6 +88,16 @@ export class RIckMOrtyAPi extends LitElement {
       `)}
     `
   }
+
+  get dataOneTemplate() {
+    return html`
+      <p>${this.charac.name}</p>
+      <p>${this.charac.species}</p>
+      <p>${this.charac.status}</p>
+      ${this.charac.image ? html`<img src='${this.charac.image}' />` : '' }
+    `;
+  }
+
 }
 
 customElements.define('my-rickandmorty', RIckMOrtyAPi);

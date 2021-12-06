@@ -6,6 +6,7 @@ export class GetDAta extends LitElement {
     return {
       url: { type: String },
       method: { type: String },
+      id: { type: Number }
     }
   }
 
