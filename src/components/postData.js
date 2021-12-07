@@ -9,7 +9,7 @@ export class PostDAta extends LitElement {
 
   constructor() {
     super();
-    this.url = 'https://jsonplaceholder.typicode.com/'
+    this.url = 'http://localhost:3000/personas'
   }
 
   _sendData(data) {
@@ -21,13 +21,13 @@ export class PostDAta extends LitElement {
   }
 
 
-  postData(title, body, userId, path) {
-    fetch(`${this.url + path}`, {
+  postData(nombre, id, edad) {
+    fetch(this.url, {
       method: 'POST',
       body: JSON.stringify({
-        title,
-        body,
-        userId
+        nombre,
+        id,
+        edad
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',

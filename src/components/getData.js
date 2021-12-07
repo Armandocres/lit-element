@@ -5,13 +5,12 @@ export class GetDAta extends LitElement {
   static get properties() {
     return {
       url: { type: String },
-      method: { type: String },
-      id: { type: Number }
     }
   }
 
   constructor() {
     super()
+    this.url = 'http://localhost:3000/personas'
   }
 
   _sendData(data) {
@@ -23,27 +22,7 @@ export class GetDAta extends LitElement {
   }
 
   getDataApi() {
-    fetch(this.url, { method: this.method })
-      .then((response) => {
-        if (response.status === 200) {
-          this.dispatchEvent(new CustomEvent('SUCCES', {
-            detail: {response}
-          }))
-          return response.json()
-        }
-      })
-      .then((data) => {
-      this._sendData(data)
-      })
-      .catch((error) => {
-        this.dispatchEvent(new CustomEvent('ERROR', {
-        detail: {error}
-      }))
-    })
-  }
-
-  getOneDataApi(id) {
-    fetch(`https://rickandmortyapi.com/api/character/${id}`, { method: this.method })
+    fetch(this.url, { method: 'GET' })
       .then((response) => {
         if (response.status === 200) {
           this.dispatchEvent(new CustomEvent('SUCCES', {

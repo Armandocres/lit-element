@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "start": "json-server --watch ./src/db/db.json"
   },
   "author": "Armando cruz <armandocres99@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "json-server": "^0.17.0",
     "lit-element": "^3.0.2"
   },
   "devDependencies": {
