@@ -4,18 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
+    "test": "web-test-runner test/**/*.test.js --coverage --node-resolve",
     "start": "json-server --watch ./src/db/db.json"
   },
   "author": "Armando cruz <armandocres99@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "json-server": "^0.17.0",
-    "lit-element": "^3.0.2"
+    "lit-element": "^3.0.2",
+    "lit-html": "^2.0.2"
   },
   "devDependencies": {
     "@open-wc/testing": "^3.0.0-next.5",
+    "@web/test-runner": "^0.13.22",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1"
   }
