@@ -12,6 +12,7 @@ export class MyCounter extends LitElement {
   constructor() {
     super();
     this.counter = 0;
+    this.attachShadow({mode: 'open'});
   }
 
   render() {
@@ -28,9 +29,9 @@ export class MyCounter extends LitElement {
     </style>
       <div class="x">Llevas: ${this.counter}</div>
       <div>
-        <button @click="${this.incrementar}">+1</button>
-        <button @click="${this.reiniciar}">Reiniciar</button>
-        <button @click="${this.decrementar}">-1</button>
+        <button id='sumar' @click="${this.incrementar}">+1</button>
+        <button id='reiniciar' @click="${this.reiniciar}">Reiniciar</button>
+        <button id='restar' @click="${this.decrementar}">-1</button>
       </div>
     `;
   }

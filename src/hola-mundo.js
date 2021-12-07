@@ -8,6 +8,12 @@ class HolaMundo extends LitElement {
     }
   }
 
+  constructor() {
+    super();
+    this.quien = 'Armando'
+    this.attachShadow({mode: 'open'});
+  }
+
 
   render() {
     return html`
