@@ -81,7 +81,6 @@ export class RIckMOrtyAPi extends LitElement {
 
   onChange(e) {
     this.valueInput = parseInt(e.target.value);
-    console.log(this.valueInput);
   }
 
   get dataTemplate() {
