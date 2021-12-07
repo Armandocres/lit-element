@@ -67,9 +67,11 @@ export class JsonPLaceholder extends LitElement {
 
   getAllDatos() {
     return html`
-      <p>${this.datos.nombre}</p>
-      <p>${this.datos.edad}</p>
-      <p>${this.datos.id}</p>
+      ${this.datos.nombre ? html`
+        <li>Nombre: ${this.datos.nombre}</li>
+        <p>Edad: ${this.datos.edad}</p>
+        <p>Id: ${this.datos.id}</p>
+      ` : ''}
     `;
   }
 
