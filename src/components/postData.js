@@ -6,14 +6,12 @@ export class PostDAta extends LitElement {
   static get properties() {
     return {
       url: { type: String },
-      tSec: { type: String}
     }
   }
 
   constructor() {
     super();
     this.url = 'http://localhost:3000/personas'
-    this.tSec = this._getTsec();
   }
 
   _sendData(data) {
@@ -22,15 +20,6 @@ export class PostDAta extends LitElement {
       bubbles: true,
       composed: true
     }))
-  }
-
-  _getTsec() {
-    try {
-      const tSec = window.sessionStorage.getItem('tSec')
-    } catch (error) {
-      tSec = 'tsec'
-    }
-    return tSec
   }
 
   postData(nombre, id, edad) {
@@ -43,7 +32,6 @@ export class PostDAta extends LitElement {
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
-        'tSec': 'algo'
       },
     })
     .then((response) => {

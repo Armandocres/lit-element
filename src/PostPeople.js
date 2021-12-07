@@ -1,5 +1,6 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { PostDAta } from './components/postData';
+import { styles } from './styles/postpeople';
 
 export class JsonPLaceholder extends LitElement {
 
@@ -21,6 +22,10 @@ export class JsonPLaceholder extends LitElement {
     this.datos = {};
   }
 
+  static get styles() {
+    return [styles]
+  }
+
   render() {
     return html`
     <form @submit=${this.dataPost}>
@@ -36,7 +41,6 @@ export class JsonPLaceholder extends LitElement {
         <input
           id="edad"
           type="number"
-          .value="${this.edad}"
           placeholder="dame la edad"
         >
       </label>
@@ -44,11 +48,10 @@ export class JsonPLaceholder extends LitElement {
         <input
           id="identificador"
           type="number"
-          .value="${this.id}"
           placeholder="ingresa el id"
         >
       </label>
-      <button type="submit">Agregar</button>
+      <button type="submit" class='Botton--submit'>Agregar</button>
     </form>
     ${this.getAllDatos()}
     `;
@@ -68,9 +71,13 @@ export class JsonPLaceholder extends LitElement {
   getAllDatos() {
     return html`
       ${this.datos.nombre ? html`
-        <li>Nombre: ${this.datos.nombre}</li>
-        <p>Edad: ${this.datos.edad}</p>
-        <p>Id: ${this.datos.id}</p>
+        <div class='Container--getData'>
+          <ul>
+            <li>Nombre: ${this.datos.nombre}</li>
+            <p>Edad: ${this.datos.edad}</p>
+            <p>Id: ${this.datos.id}</p>
+          </ul>
+        </div>
       ` : ''}
     `;
   }

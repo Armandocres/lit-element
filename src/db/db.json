@@ -26,34 +26,9 @@
       "edad": "45"
     },
     {
-      "nombre": "Rodolfo",
-      "id": "789",
-      "edad": "25"
-    },
-    {
-      "nombre": "Emiliano",
-      "id": "145",
-      "edad": "145"
-    },
-    {
-      "nombre": "Paloma",
-      "id": "999",
-      "edad": "25"
-    },
-    {
-      "nombre": "Noe",
-      "id": "000",
-      "edad": "25"
-    },
-    {
-      "nombre": "Noe2",
-      "id": "001",
-      "edad": "30"
-    },
-    {
-      "nombre": "JUan",
-      "id": "0002",
-      "edad": "58"
+      "nombre": "Juan",
+      "id": "0005",
+      "edad": "14"
     }
   ]
 }

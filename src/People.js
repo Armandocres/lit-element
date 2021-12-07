@@ -1,5 +1,6 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { GetDAta } from './components/getData';
+import { styles } from './styles/people';
 
 export class RIckMOrtyAPi extends LitElement {
 
@@ -9,6 +10,12 @@ export class RIckMOrtyAPi extends LitElement {
       charac: { type: Object },
       valueInput: {type: Number}
     }
+  }
+
+  static get styles() {
+    return [
+      styles
+    ]
   }
 
   constructor() {
@@ -22,9 +29,8 @@ export class RIckMOrtyAPi extends LitElement {
 
   render() {
     return html`
-      <button @click='${this.getData}'>Trae información completa</button>
-      ${this.dataTemplate}
-      ${this.dataOneTemplate}
+      <button @click='${this.getData}' class='Button-getData'>Trae información completa</button>
+      ${this.dataTemplate()}
     `;
   }
 
@@ -52,10 +58,10 @@ export class RIckMOrtyAPi extends LitElement {
     this.valueInput = parseInt(e.target.value);
   }
 
-  get dataTemplate() {
+  dataTemplate() {
     return html`
       ${this.items.map(character => html`
-        <div>
+        <div class='Container'>
           <ul>
             <li>Nombre: ${character.nombre}</li>
             <p>Edad: ${character.edad}</p>
