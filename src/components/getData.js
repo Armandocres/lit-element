@@ -14,11 +14,17 @@ export class GetDAta extends LitElement {
   }
 
   _sendData(data) {
-    this.dispatchEvent(new CustomEvent('ApiCall', {
-      detail: { data },
-      bubbles: true,
-      composed: true
-    }))
+    try {
+      this.dispatchEvent(new CustomEvent('ApiCall', {
+        detail: { data },
+        bubbles: true,
+        composed: true
+      }))
+    } catch (error) {
+      this.dispatchEvent(new CustomEvent('ERROR-CATCH', {
+        detail: {error}
+      }))
+    }
   }
 
   getDataApi() {

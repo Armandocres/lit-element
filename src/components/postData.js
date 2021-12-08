@@ -15,11 +15,17 @@ export class PostDAta extends LitElement {
   }
 
   _sendData(data) {
-    this.dispatchEvent(new CustomEvent('PostApí', {
-      detail: { data },
-      bubbles: true,
-      composed: true
-    }))
+    try {
+      this.dispatchEvent(new CustomEvent('PostApí', {
+        detail: { data },
+        bubbles: true,
+        composed: true
+      }))
+    } catch (error) {
+      this.dispatchEvent(new CustomEvent('ERROR-CATCH', {
+        detail: {error}
+      }))
+    }
   }
 
   postData(nombre, id, edad) {

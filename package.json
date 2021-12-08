@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "test": "web-test-runner test/**/*.test.js --coverage --node-resolve",
+    "test": "web-test-runner test/**/*.test.js  --coverage --node-resolve",
     "start": "json-server --watch ./src/db/db.json"
   },
   "author": "Armando cruz <armandocres99@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "json-server": "^0.17.0",
     "lit-element": "^3.0.2",
     "lit-html": "^2.0.2"
